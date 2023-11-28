@@ -1,0 +1,28 @@
+// Primeiro vamos definir os pinos
+const int pinInterruptor = 2;  // Pino que o interruptor está conectado
+const int pinRele = 5;         // Pino que o relé está conectado
+
+void setup() {
+    pinMode(pinInterruptor, INPUT);
+    pinMode(pinRele, OUTPUT);
+
+    //Desligar o relé inicialmente
+    digitalWrite(pinRele, LOW);
+}
+
+void loop() {
+    //Aqui ele le o estado do interruptor
+    int estadoInterruptor = digitalRead(pinInterruptor);
+
+    //Aqui ele vai tomar decisões com base no estado do interruptor, exemplo:
+    if (estadoInterruptor == HIGH) {
+        //Se o interruptor estiver ligado, ligar o relé
+        digitalWrite(pinRele, HIGH);
+    } else {
+        //Se o interruptor estiver desligado, desligar o relé
+        digitalWrite(pinRele, LOW);
+    }
+    
+    //Aqui vai aguardar um curto período de tempo para evitar leituras rápidas
+    delay(100);
+}
