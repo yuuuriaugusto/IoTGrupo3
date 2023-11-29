@@ -1,0 +1,18 @@
+#include <ModbusMaster.h>
+
+#define RS485MestreSerial Serial
+
+ModbusMaster node;
+
+void setup() {
+  Serial.begin(9600);
+  node.begin(2, RS485MestreSerial);  // ID do dispositivo escravo é 2
+}
+
+void loop() {
+  // Receber comandos da ESP32 e controlar os relés no escravo
+  if (node.poll() == node.ku8MBSuccess) {
+    // Analisar o comando recebido e controlar os relés
+    // Exemplo: digitalWrite(pino_rele, estado_do_rele);
+  }
+}
