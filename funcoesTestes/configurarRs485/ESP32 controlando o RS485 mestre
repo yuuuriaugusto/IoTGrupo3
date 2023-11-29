@@ -1,0 +1,23 @@
+#include <ModbusMaster.h>
+
+#define RS485MestreSerial Serial2
+
+ModbusMaster node;
+
+void setup() {
+  Serial.begin(9600);
+  RS485MestreSerial.begin(9600);
+
+  node.begin(1, RS485MestreSerial);  // ID do dispositivo mestre é 1
+}
+
+void loop() {
+  // Enviar comandos Modbus para controlar os relés no escravo
+  node.writeSingleCoil(1, true); // Endereço do relé desejado
+
+  delay(1000);
+
+  node.writeSingleCoil(1, false); // Desativar o relé
+
+  delay(1000);
+}
