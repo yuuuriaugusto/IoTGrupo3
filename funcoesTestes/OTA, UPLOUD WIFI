@@ -1,5 +1,6 @@
 #include <ArduinoOTA.h>
 #include <ESPAsyncWebServer.h>
+#include <ESPmDNS.h>  
 #include <WiFi.h>
 
 const char* ssid = "SuaRedeWiFi"; // Coloque a rede WIFI
