@@ -133,7 +133,7 @@ void loop()
  
     if (contador_ms >= 1000)
     {    
-        Serial.println("Programa depois da atualizacao OTA 3.0");
+        Serial.println("ahahahahahahaha");
         contador_ms = 0;
     }
 }
