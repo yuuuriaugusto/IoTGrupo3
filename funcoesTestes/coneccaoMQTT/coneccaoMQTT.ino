@@ -1,5 +1,4 @@
 //Programa: comunicação MQTT com ESP32
-//Autor: Pedro Bertoleti
  
 /* Headers */ 
 #include <WiFi.h> /* Header para uso das funcionalidades de wi-fi do ESP32 */
@@ -29,13 +28,13 @@ const char* SSID = "Yuri";
 const char* PASSWORD = "33236257"; 
   
 /* URL do broker MQTT que deseja utilizar */
-const char* BROKER_MQTT = /*"broker.hivemq.com";*/
-                          "ec2-15-229-10-123.sa-east-1.compute.amazonaws.com";
-/*                        "mqtts://ec2-18-231-160-31.sa-east-1.compute.amazonaws.com:8883",
-                          "mqtts://ec2-15-228-23-54.sa-east-1.compute.amazonaws.com:8883"; */
+const char* BROKER_MQTT =
+/*                          "ec2-15-229-10-123.sa-east-1.compute.amazonaws.com";*/
+/*                        "ec2-18-231-160-31.sa-east-1.compute.amazonaws.com";*/
+                          "ec2-15-228-23-54.sa-east-1.compute.amazonaws.com";
 const char* LOCAL_MQTT = "6572162dee13ec93cfcaada3";
 const char* USER_MQTT = "65721756ee13ec93cfcaada7";
-const char* JWT_MQTT[800] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJlZDI1NTE5LW5rZXkifQ.eyJqdGkiOiI1RlpIQk5aQlFOQ1MzN1RPVFVFVU9YTURENVkzNVlTNkhUVURGVjc3SkxFS09YQ1pTVEhBIiwiaWF0IjoxNzAxOTc1OTc4LCJpc3MiOiJBQk9IMkRWR0NOVU81VTIyQlU2RFVYVUlMNlA1N0hWTUkzTERUQ0ZQNUpVSk1ZVUFIQ1hYWExRWCIsIm5hbWUiOiJmaXJtd2FyZSIsInN1YiI6IlVDNFZTVjczNEQyTDNDQ1JUU1g0SkVaTUVKVkIzRUhWSlNDTzRONDJSWktNQzVOQjZFN0RFWFZSIiwibmF0cyI6eyJwdWIiOnt9LCJzdWIiOnt9LCJpc3N1ZXJfYWNjb3VudCI6IkFBRVBOVVRSNUlaTVpFRUFJNTNWMlZCWENBVFVEWkdLS0haWkkzWEo3UVpBN0NYRUNSN05EQVBMIiwidGFncyI6WyJ0ZWFtOjY1NzIxNjJkZWUxM2VjOTNjZmNhYWRhMyJdLCJ0eXBlIjoidXNlciIsInZlcnNpb24iOjJ9fQ.C961T8k2UhBUBvzkbQF0NA3Dg2lMA48uYT74nomL_zJaPzr4kVbysYPXWdHSRtuGAxv0qwqQkYTvGgnJv3obAQ";
+const char* PASS_MQTT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJlZDI1NTE5LW5rZXkifQ.eyJqdGkiOiI1RlpIQk5aQlFOQ1MzN1RPVFVFVU9YTURENVkzNVlTNkhUVURGVjc3SkxFS09YQ1pTVEhBIiwiaWF0IjoxNzAxOTc1OTc4LCJpc3MiOiJBQk9IMkRWR0NOVU81VTIyQlU2RFVYVUlMNlA1N0hWTUkzTERUQ0ZQNUpVSk1ZVUFIQ1hYWExRWCIsIm5hbWUiOiJmaXJtd2FyZSIsInN1YiI6IlVDNFZTVjczNEQyTDNDQ1JUU1g0SkVaTUVKVkIzRUhWSlNDTzRONDJSWktNQzVOQjZFN0RFWFZSIiwibmF0cyI6eyJwdWIiOnt9LCJzdWIiOnt9LCJpc3N1ZXJfYWNjb3VudCI6IkFBRVBOVVRSNUlaTVpFRUFJNTNWMlZCWENBVFVEWkdLS0haWkkzWEo3UVpBN0NYRUNSN05EQVBMIiwidGFncyI6WyJ0ZWFtOjY1NzIxNjJkZWUxM2VjOTNjZmNhYWRhMyJdLCJ0eXBlIjoidXNlciIsInZlcnNpb24iOjJ9fQ.C961T8k2UhBUBvzkbQF0NA3Dg2lMA48uYT74nomL_zJaPzr4kVbysYPXWdHSRtuGAxv0qwqQkYTvGgnJv3obAQ";
 
 /* Porta do Broker MQTT */
 int BROKER_PORT = 8883;
@@ -95,7 +94,8 @@ void init_wifi(void)
 void init_mqtt(void) 
 {
     /* informa a qual broker e porta deve ser conectado */
-    MQTT.setServer(BROKER_MQTT, BROKER_PORT, LOCAL_MQTT, USER_MQTT, JWT_MQTT); 
+    MQTT.setServer(BROKER_MQTT, BROKER_PORT);
+    MQTT.connect(LOCAL_MQTT, USER_MQTT, PASS_MQTT);
     /* atribui função de callback (função chamada quando qualquer informação do 
     tópico subescrito chega) */
     MQTT.setCallback(mqtt_callback);            
@@ -132,7 +132,7 @@ void reconnect_mqtt(void)
     {
         Serial.print("* Tentando se conectar ao Broker MQTT: ");
         Serial.println(BROKER_MQTT);
-        if (MQTT.connect(ID_MQTT)) 
+        if (MQTT.connect(LOCAL_MQTT, USER_MQTT, PASS_MQTT)) 
         {
             Serial.println("Conectado com sucesso ao broker MQTT!");
             MQTT.subscribe(TOPICO_SUBSCRIBE); 
