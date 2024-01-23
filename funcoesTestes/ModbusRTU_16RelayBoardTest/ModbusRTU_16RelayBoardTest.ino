@@ -1,11 +1,3 @@
-/*
- This sketch demonstrates controlling a 16 coil relay board that receives commands using
- Modbus RTU connected via RS485
- Turns on each relay in turn.
- Turns off each relay
- Toggles relays on and off at random
- 
-*/
 
 //#include <ArduinoRS485.h> // ArduinoModbus depends on the ArduinoRS485 library
 #include <ArduinoModbus.h>

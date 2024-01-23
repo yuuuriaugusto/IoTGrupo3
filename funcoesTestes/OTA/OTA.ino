@@ -3,8 +3,8 @@
 #include <ESPmDNS.h>  
 #include <WiFi.h>
 
-const char* ssid = "Yuri"; // Coloque a rede WIFI
-const char* password = "33236257"; // Aqui vai a senha da rede
+const char* ssid = ""; // Coloque a rede WIFI
+const char* password = ""; // Aqui vai a senha da rede
 
 const char* host = "ESP32-C6"; // Pode alterar o nome
 

@@ -1,4 +1,3 @@
-// This example demonstrates the ESP RainMaker with a standard Switch device.
 #include "RMaker.h"
 #include "WiFi.h"
 #include "WiFiProv.h"
@@ -8,11 +7,11 @@
 const char *service_name = "PROV_1234";
 const char *pop = "abcd1234";
 
-static int gpio_0 = 0;
-static int gpio_1 = 16;
+static int gpio_0 = 15;
+static int gpio_1 = 0;
 
-static int gpio_switch = 13;
-static int gpio_switch2 = 12;
+static int gpio_switch = 12;
+static int gpio_switch2 = 13;
 
 bool switch_state2 = true;
 bool sts_luz2 = 0;
@@ -69,12 +68,7 @@ void setup() {
 
   // This is optional
   RMaker.enableOTA(OTA_USING_TOPICS);
-  // If you want to enable scheduling, set time zone for your region using
-  // setTimeZone(). The list of available values are provided here
-  // https://rainmaker.espressif.com/docs/time-service.html
-  //  RMaker.setTimeZone("Asia/Shanghai");
-  //  Alternatively, enable the Timezone service and let the phone apps set the
-  //  appropriate timezone
+  
   RMaker.enableTZService();
 
   RMaker.enableSchedule();

@@ -1,11 +1,3 @@
-/*********
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com/esp32-relay-module-ac-web-server/
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-*********/
-
 // Import required libraries
 #include "WiFi.h"
 #include "ESPAsyncWebServer.h"
@@ -20,8 +12,8 @@
 int relayGPIOs[NUM_RELAYS] = {25, 33, 32, 14};
 
 // Replace with your network credentials
-const char* ssid = "Yuri";
-const char* password = "33236257";
+const char* ssid = "";
+const char* password = "";
 
 const char* PARAM_INPUT_1 = "relay";  
 const char* PARAM_INPUT_2 = "state";

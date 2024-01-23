@@ -4,37 +4,23 @@
 #include <WiFi.h> /* Header para uso das funcionalidades de wi-fi do ESP32 */
 #include <PubSubClient.h>  /*  Header para uso da biblioteca PubSubClient */
  
-/* Defines do MQTT */
-/* IMPORTANTE: recomendamos fortemente alterar os nomes
-               desses tópicos. Caso contrário, há grandes
-               chances de você enviar e receber mensagens de um ESP32
-               de outra pessoa.
-*/
 /* Tópico MQTT para recepção de informações do broker MQTT para ESP32 */
 #define TOPICO_SUBSCRIBE "IXC_IoT_UNOESC_recebe_informacao"   
 /* Tópico MQTT para envio de informações do ESP32 para broker MQTT */
 #define TOPICO_PUBLISH   "IXC_IoT_UNOESC_envia_informacao"  
 /* id mqtt (para identificação de sessão) */
-/* IMPORTANTE: este deve ser único no broker (ou seja, 
-               se um client MQTT tentar entrar com o mesmo 
-               id de outro já conectado ao broker, o broker 
-               irá fechar a conexão de um deles).
-*/
 #define ID_MQTT  "IoT_UNOESC"     
 /*  Variáveis e constantes globais */
 /* SSID / nome da rede WI-FI que deseja se conectar */
-const char* SSID = "Yuri"; 
+const char* SSID = ""; 
 /*  Senha da rede WI-FI que deseja se conectar */
-const char* PASSWORD = "33236257"; 
+const char* PASSWORD = ""; 
   
 /* URL do broker MQTT que deseja utilizar */
-const char* BROKER_MQTT =
-/*                          "ec2-15-229-10-123.sa-east-1.compute.amazonaws.com";*/
-/*                        "ec2-18-231-160-31.sa-east-1.compute.amazonaws.com";*/
-                          "ec2-15-228-23-54.sa-east-1.compute.amazonaws.com";
-const char* LOCAL_MQTT = "6572162dee13ec93cfcaada3";
-const char* USER_MQTT = "65721756ee13ec93cfcaada7";
-const char* PASS_MQTT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJlZDI1NTE5LW5rZXkifQ.eyJqdGkiOiI1RlpIQk5aQlFOQ1MzN1RPVFVFVU9YTURENVkzNVlTNkhUVURGVjc3SkxFS09YQ1pTVEhBIiwiaWF0IjoxNzAxOTc1OTc4LCJpc3MiOiJBQk9IMkRWR0NOVU81VTIyQlU2RFVYVUlMNlA1N0hWTUkzTERUQ0ZQNUpVSk1ZVUFIQ1hYWExRWCIsIm5hbWUiOiJmaXJtd2FyZSIsInN1YiI6IlVDNFZTVjczNEQyTDNDQ1JUU1g0SkVaTUVKVkIzRUhWSlNDTzRONDJSWktNQzVOQjZFN0RFWFZSIiwibmF0cyI6eyJwdWIiOnt9LCJzdWIiOnt9LCJpc3N1ZXJfYWNjb3VudCI6IkFBRVBOVVRSNUlaTVpFRUFJNTNWMlZCWENBVFVEWkdLS0haWkkzWEo3UVpBN0NYRUNSN05EQVBMIiwidGFncyI6WyJ0ZWFtOjY1NzIxNjJkZWUxM2VjOTNjZmNhYWRhMyJdLCJ0eXBlIjoidXNlciIsInZlcnNpb24iOjJ9fQ.C961T8k2UhBUBvzkbQF0NA3Dg2lMA48uYT74nomL_zJaPzr4kVbysYPXWdHSRtuGAxv0qwqQkYTvGgnJv3obAQ";
+const char* BROKER_MQTT = ;
+const char* LOCAL_MQTT = ;
+const char* USER_MQTT = ;
+const char* PASS_MQTT = ;
 
 /* Porta do Broker MQTT */
 int BROKER_PORT = 8883;

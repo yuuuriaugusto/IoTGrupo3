@@ -15,18 +15,18 @@ char deviceName_3[] = "Switch3";
 char deviceName_4[] = "Switch4";
 
 // define the GPIO connected with Relays and switches
-static uint8_t RelayPin1 = 8;  //D23
-static uint8_t RelayPin2 = 0;  //D22
-static uint8_t RelayPin3 = 6;  //D21
-static uint8_t RelayPin4 = 4;  //D19
+static uint8_t RelayPin1 = 12;  //D23
+static uint8_t RelayPin2 = 13;  //D22
+static uint8_t RelayPin3 = 9;  //D21
+static uint8_t RelayPin4 = 18;  //D19
 
-static uint8_t SwitchPin1 = 12;  //D13
-static uint8_t SwitchPin2 = 18;  //D12
-static uint8_t SwitchPin3 = 20;  //D14
-static uint8_t SwitchPin4 = 22;  //D27
+static uint8_t SwitchPin1 = 3;  //D13
+static uint8_t SwitchPin2 = 11;  //D12
+static uint8_t SwitchPin3 = 8;  //D14
+static uint8_t SwitchPin4 = 1;  //D27
 
 static uint8_t wifiLed    = 8;   //D2
-static uint8_t gpio_reset = 9;
+static uint8_t gpio_reset = 0;
 
 /* Variable for reading pin status*/
 bool toggleState_1 = LOW; 
